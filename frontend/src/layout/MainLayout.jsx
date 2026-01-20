@@ -5,8 +5,9 @@ import dummyData from "../../data/dummy.json";
 import AirQuality from "@/components/custom-components/AirQuality";
 import MonthlyRainfall from "@/components/custom-components/MonthlyRainfall";
 import SunsetSunRise from "@/components/custom-components/SunsetSunRise";
+import Today from "@/components/custom-components/Today";
 
-const MainLayout = ({ day, temp }) => {
+const MainLayout = () => {
     return (
         <div className="flex">
             <div className="bg-[#f0f5ff] w-[70%] h-screen border-2">
@@ -22,7 +23,9 @@ const MainLayout = ({ day, temp }) => {
                     <div className="flex-1/2 "><SunsetSunRise /></div>
                 </div>
             </div>
-            {/* <div className="bg-white w-[30%] h-screen"></div> */}
+            <div className="bg-white w-[30%] h-screen">
+                <Today />
+            </div>
         </div>
     );
 };
