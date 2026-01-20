@@ -33,28 +33,18 @@ const Today = () => {
                         </div>
 
 
-                        <div className="mb-2 flex items-center gap-3 justify-center">
-                            <p className="text-sm font-bold">Wind</p>
-                            <span className="border-r-2 border-l-[#8db6f1]  h-6"></span>
-                            <p className="text-sm font-bold">10 km/h</p>
-                        </div>
-
-                        <div className="mb-2 flex items-center gap-3 justify-center">
-                            <p className="text-sm font-bold">Humidity</p>
-                            <span className="border-r-2 border-l-[#8db6f1]  h-6"></span>
-                            <p>50%</p>
-                        </div>
-                        <div className="mb-2 flex items-center gap-3 justify-center">
-                            <p className="text-sm font-bold">Pressure</p>
-                            <span className="border-r-2 border-l-[#8db6f1]  h-6"></span>
-                            <p>1000 hPa</p>
-                        </div>
-                        <div className="mb-2 flex items-center gap-3 justify-center">
-                            <p className="text-sm font-bold">Visibility</p>
-                            <span className="border-r-2 border-l-[#8db6f1]  h-6"></span>
-                            <p>10 km</p>
-                        </div>
-
+                        {[
+                            { label: "Wind", value: "10 km/h" },
+                            { label: "Humidity", value: "50%" },
+                            { label: "Pressure", value: "1000 hPa" },
+                            { label: "Visibility", value: "10 km" }
+                        ].map((item) => (
+                            <div key={item.label} className="mb-2 flex items-center gap-3 justify-center">
+                                <p className="text-sm font-bold">{item.label}</p>
+                                <span className="border-r-2 border-l-[#8db6f1] h-6"></span>
+                                <p className="text-sm font-bold">{item.value}</p>
+                            </div>
+                        ))}
                     </div>
 
                 </div>
