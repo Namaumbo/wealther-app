@@ -1,0 +1,30 @@
+import DateClock from "@/components/custom-components/DateClock";
+import { TemperatureCard } from "@/components/custom-components/TemperatureCard";
+
+import dummyData from "../../data/dummy.json";
+import AirQuality from "@/components/custom-components/AirQuality";
+import MonthlyRainfall from "@/components/custom-components/MonthlyRainfall";
+import SunsetSunRise from "@/components/custom-components/SunsetSunRise";
+
+const MainLayout = ({ day, temp }) => {
+    return (
+        <div className="flex">
+            <div className="bg-[#f0f5ff] w-[70%] h-screen border-2">
+                <div className="flex">
+                    <DateClock />
+                    <p>Hello</p>
+                </div>
+                <div className="w-full flex ">
+                    {dummyData.map((item) => { return <TemperatureCard day={item.day} temp={item.temp} icon={item.icon} /> })}
+                </div>
+                <div className=" flex mt-5 pl-6">
+                    <div className="flex-1/2 "><AirQuality /><MonthlyRainfall /></div>
+                    <div className="flex-1/2 "><SunsetSunRise /></div>
+                </div>
+            </div>
+            {/* <div className="bg-white w-[30%] h-screen"></div> */}
+        </div>
+    );
+};
+
+export default MainLayout;

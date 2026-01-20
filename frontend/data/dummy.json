@@ -1,0 +1,32 @@
+[
+    {
+        "day": "Monday",
+        "temp": 24,
+        "icon": "https://img.icons8.com/external-kosonicon-flat-kosonicon/64/external-sunny-weather-kosonicon-flat-kosonicon.png"
+    },
+    {
+        "day": "Tuesday",
+        "temp": 27,
+        "icon": "https://img.icons8.com/external-kosonicon-flat-kosonicon/64/external-sunny-weather-kosonicon-flat-kosonicon.png"
+    },
+    {
+        "day": "Wednesday",
+        "temp": 22,
+        "icon": "https://img.icons8.com/3d-fluency/94/partly-cloudy-day.png"
+    },
+    {
+        "day": "Thursday",
+        "temp": 26,
+        "icon": "https://img.icons8.com/lollipop/48/partly-cloudy-night.png"
+    },
+    {
+        "day": "Friday",
+        "temp": 25,
+        "icon": "https://img.icons8.com/lollipop/48/partly-cloudy-rain.png"
+    },
+    {
+        "day": "Saturday",
+        "temp": 28,
+        "icon": "https://img.icons8.com/lollipop/48/partly-cloudy-rain.png"
+    }
+]
