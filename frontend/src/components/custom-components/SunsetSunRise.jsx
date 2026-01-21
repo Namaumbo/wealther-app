@@ -31,7 +31,7 @@ const SunsetSunRise = () => {
                 </div>
                 <div className="flex items-center gap-15 mt-5">
                     <div className="flex items-center gap-2">
-                        <SunIcon color="#fac089" size={60} />
+                        <SunIcon color="#fac089" size={60}  />
                         <div className="flex  flex-col justify-between">
                             <p className="text-sm font-bold text-[#e5dfe6]">Sunrise</p>
                             <p className="text-2xl text-[#8aacd5] font-bold">4:20 AM</p>
