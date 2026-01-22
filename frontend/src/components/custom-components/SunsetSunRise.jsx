@@ -45,15 +45,10 @@ const SunsetSunRise = () => {
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
-
             <div className="p-7 m-7">
                 <LocationSuns />
             </div>
-
         </div>
     )
 }

@@ -18,7 +18,7 @@ const MainLayout = () => {
                 <div className="w-full flex ">
                     {dummyData.map((item) => { return <TemperatureCard day={item.day} temp={item.temp} icon={item.icon} /> })}
                 </div>
-                <div className=" flex mt-5 pl-6">
+                <div className=" flex pl-6">
                     <div className="flex-1/2 "><AirQuality /><MonthlyRainfall /></div>
                     <div className="flex-1/2 "><SunsetSunRise /></div>
                 </div>

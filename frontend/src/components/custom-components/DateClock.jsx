@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 const DateClock = () => {
     const [time, setTime] = useState(new Date().toLocaleTimeString());
@@ -8,7 +8,6 @@ const DateClock = () => {
         const hour = new Date().getHours();
         return hour < 12 ? "Morning" : "Afternoon"
     }
-    // seconds reflection
     setInterval(() => {
         setTime(new Date().toLocaleTimeString());
     }, 1000);
@@ -29,10 +28,13 @@ const DateClock = () => {
     }, []);
 
     return (
-        <div>
-            <h1 className="text-5xl font-bold text-[#5a91ff]">{time}</h1>
-            <h1 className="text-2xl font-bold text-[#333338]">{date}</h1>
-            <h1 className="text-2xl font-bold text-[#5a91ff]">{`Good ${greetingText()}`}</h1> 
+        <div className="p-5">
+            <h1 className="text-6xl font-bold text-[#5a91ff] mb-2">{time}</h1>
+            <p className="text-sm text-gray-500 mb-4">{date}</p>
+            <h2 className="text-xl font-medium text-[#5a91ff] flex items-center gap-2">
+                <span className="text-2xl">☀️</span>
+                {`Good ${greetingText()}, `}
+            </h2>
         </div>
     )
 }
