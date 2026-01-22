@@ -10,7 +10,7 @@ import Today from "@/components/custom-components/Today";
 const MainLayout = () => {
     return (
         <div className="flex">
-            <div className="bg-[#f0f5ff] w-[70%] h-screen border-2">
+            <div className="bg-[#f0f5ff] w-[70%] h-screen">
                 <div className="flex">
                     <DateClock />
                     <p>Hello</p>
