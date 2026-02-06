@@ -4,17 +4,12 @@ app = create_app()
 
 if __name__ == "__main__":
     print(f"""
-    
-    --------------------------------
-    |   Starting Flask application on port {os.getenv("PORT")}   |
-    --------------------------------
-    |   Environment: {os.getenv("ENV")}   |
-    --------------------------------
-    |   Debug: {os.getenv("DEBUG")}   |
-    --------------------------------
-    |   Server: {os.getenv("SERVER")}   |
-    --------------------------------
-    |   Port: {os.getenv("PORT")}   |
-    --------------------------------
+
+   |----------------------------------------|
+   |       WEATHER APP BACKEND BOOTING UP   |
+   |       V0.0.1                           |
+   |       DEVELOPMENT MODE                 |
+   |       PORT: {os.getenv("PORT")}        |
+   |________________________________________|
     """)
     app.run(debug=True)
