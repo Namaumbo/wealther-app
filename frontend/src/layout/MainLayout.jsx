@@ -415,13 +415,13 @@ function MainLayout() {
     }, [weatherData.updatedAt]);
 
     return (
-        <main className="relative min-h-screen overflow-hidden bg-background">
+        <main className="relative min-h-screen overflow-hidden bg-background w-1/2 m-auto">
             <div className="relative mx-auto flex min-h-screen flex-col gap-8 py-12 lg:gap-12 lg:py-16">
                 <header className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div className="space-y-3">
                         <Badge
                             variant="outline"
-                            className="inline-flex items-center gap-2 rounded-full border-border/50 bg-background/55 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70 backdrop-blur"
+                            className="inline-flex items-center gap-2 rounded-full bg-background/55 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70 backdrop-blur"
                         >
                             <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
                             7-Day Coastal Outlook
@@ -478,7 +478,7 @@ function MainLayout() {
                 >
                     <motion.article
                         variants={itemVariants}
-                        className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-6 backdrop-blur transition-all hover:border-border/60 hover:shadow-lg"
+                        className="group relative overflow-hidden rounded-2xl bg-background/60 p-6 backdrop-blur transition-all hover:shadow-lg"
                         role="article"
                         aria-label="Current weather conditions"
                     >
@@ -487,7 +487,7 @@ function MainLayout() {
                         <div className="relative flex flex-col gap-6">
                             <div className="flex flex-col gap-3">
                                 <div className="flex items-center gap-3">
-                                    <div className="rounded-full border border-border/40 bg-background/60 p-3">
+                                    <div className="rounded-full bg-background/60 p-3">
                                         <Sun className="h-6 w-6 text-primary" aria-hidden="true" />
                                     </div>
                                     <div>
@@ -534,9 +534,9 @@ function MainLayout() {
                                         variants={listItemVariants}
                                         whileHover={{ y: -4 }}
                                         transition={{ duration: 0.2 }}
-                                        className="flex items-start gap-3 rounded-xl border border-border/30 bg-background/40 p-4 transition-all hover:border-border/50 hover:bg-background/60"
+                                        className="flex items-start gap-3 rounded-xl bg-background/40 p-4 transition-all hover:bg-background/60"
                                     >
-                                        <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/40 bg-background/60 text-foreground/70">
+                                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-background/60 text-foreground/70">
                                             <metric.icon className="h-4 w-4" aria-hidden="true" />
                                         </span>
                                         <div className="space-y-1">
@@ -554,7 +554,7 @@ function MainLayout() {
                                 ))}
                             </motion.div>
 
-                            <div className="flex flex-col gap-3 rounded-xl border border-border/30 bg-background/30 p-4">
+                            <div className="flex flex-col gap-3 rounded-xl bg-background/30 p-4">
                                 <div className="flex items-center justify-between text-sm text-foreground/70">
                                     <div className="flex items-center gap-2">
                                         <Sunrise className="h-4 w-4" aria-hidden="true" />
@@ -579,7 +579,7 @@ function MainLayout() {
 
                     <motion.article
                         variants={itemVariants}
-                        className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-6 backdrop-blur transition-all hover:border-border/60 hover:shadow-lg "
+                        className="group relative overflow-hidden rounded-2xl bg-background/60 p-6 backdrop-blur transition-all hover:shadow-lg "
                         role="article"
                         aria-label="Hourly forecast chart"
                     >
@@ -643,7 +643,7 @@ function MainLayout() {
                                             cursor={{ stroke: "hsl(var(--primary) / 0.3)" }}
                                             contentStyle={{
                                                 backgroundColor: "hsl(var(--background) / 0.8)",
-                                                border: "1px solid hsl(var(--border))",
+                                                border: "0px solid transparent",
                                                 borderRadius: "12px",
                                                 backdropFilter: "blur(12px)",
                                                 padding: "10px 12px",
@@ -692,7 +692,7 @@ function MainLayout() {
                                             key={hour.time}
                                             role="listitem"
                                             variants={listItemVariants}
-                                            className="group/hour flex flex-col gap-2 rounded-xl border border-border/30 bg-background/40 p-4 text-left transition-all hover:border-border/50 hover:bg-background/60"
+                                            className="group/hour flex flex-col gap-2 rounded-xl bg-background/40 p-4 text-left transition-all hover:bg-background/60"
                                         >
                                             <p className="text-xs uppercase tracking-[0.2em] text-foreground/60">
                                                 {formatHour(hour.time)}
@@ -707,7 +707,7 @@ function MainLayout() {
                                             </div>
                                             <div className="flex items-center justify-between text-sm text-foreground/70">
                                                 <div className="flex items-center gap-2">
-                                                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border/40 bg-background/50 text-foreground/70">
+                                                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-background/50 text-foreground/70">
                                                         <Icon className="h-4 w-4" aria-hidden="true" />
                                                     </span>
                                                     <span>{hour.windSpeed} mph winds</span>
@@ -725,7 +725,7 @@ function MainLayout() {
 
                     <motion.article
                         variants={itemVariants}
-                        className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-6 backdrop-blur transition-all hover:border-border/60 hover:shadow-lg "
+                        className="group relative overflow-hidden rounded-2xl bg-background/60 p-6 backdrop-blur transition-all hover:shadow-lg "
                         role="article"
                         aria-label="7 day extended forecast"
                     >
@@ -766,7 +766,7 @@ function MainLayout() {
                                             variants={listItemVariants}
                                             whileHover={{ y: -4 }}
                                             transition={{ duration: 0.2 }}
-                                            className="flex flex-col gap-3 rounded-xl border border-border/30 bg-background/40 p-4 transition-all hover:border-border/50 hover:bg-background/60"
+                                            className="flex flex-col gap-3 rounded-xl bg-background/40 p-4 transition-all hover:bg-background/60"
                                         >
                                             <div className="flex items-center justify-between text-sm text-foreground/70">
                                                 <span className="text-xs uppercase tracking-[0.2em]">
@@ -776,7 +776,7 @@ function MainLayout() {
                                             </div>
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-3">
-                                                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/40 bg-background/50 text-foreground/70">
+                                                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-background/50 text-foreground/70">
                                                         <Icon className="h-5 w-5" aria-hidden="true" />
                                                     </span>
                                                     <div>
@@ -790,7 +790,7 @@ function MainLayout() {
                                                 </div>
                                                 <Badge
                                                     variant="outline"
-                                                    className="rounded-full border-border/40 bg-background/50 px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-foreground/60"
+                                                    className="rounded-full bg-background/50 px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-foreground/60"
                                                 >
                                                     {day.condition === "sunny" && "Clear"}
                                                     {day.condition === "cloudy" && "Clouds"}
@@ -807,7 +807,7 @@ function MainLayout() {
 
                     <motion.article
                         variants={itemVariants}
-                        className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-6 backdrop-blur transition-all hover:border-border/60 hover:shadow-lg"
+                        className="group relative overflow-hidden rounded-2xl bg-background/60 p-6 backdrop-blur transition-all hover:shadow-lg"
                         role="article"
                         aria-label="Air quality and weather alerts"
                     >
@@ -840,7 +840,7 @@ function MainLayout() {
                                         key={metric.label}
                                         role="listitem"
                                         variants={listItemVariants}
-                                        className="rounded-xl border border-border/30 bg-background/40 p-4"
+                                        className="rounded-xl bg-background/40 p-4"
                                     >
                                         <div className="flex items-center justify-between">
                                             <p className="text-xs uppercase tracking-[0.2em] text-foreground/60">
@@ -878,9 +878,9 @@ function MainLayout() {
                                                 key={alert.title}
                                                 role="listitem"
                                                 variants={listItemVariants}
-                                                className="flex items-start gap-3 rounded-xl border border-border/30 bg-background/40 p-4"
+                                                className="flex items-start gap-3 rounded-xl bg-background/40 p-4"
                                             >
-                                                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/40 bg-background/60 text-foreground/70">
+                                                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-background/60 text-foreground/70">
                                                     <Icon className="h-5 w-5" aria-hidden="true" />
                                                 </span>
                                                 <div className="flex-1 space-y-1">
