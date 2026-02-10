@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask,flash
 from app.config.config import DevelopmentConfig, ProductionConfig
 
 
@@ -13,6 +13,6 @@ def create_app(test_config=None):
 
     @app.route("/")
     def hello_world():
-        return "Hello, World!"
+        return {"message": "Hello, World!"}
 
     return app
