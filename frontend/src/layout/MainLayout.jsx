@@ -429,7 +429,7 @@ function MainLayout() {
 
                         <div>
                             <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-                                Coastal Weather Overview
+                                Lilongwe Weather Overview
                             </h1>
                             <p className="mt-2 flex flex-wrap items-center gap-2 text-sm text-foreground/70">
                                 <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -448,7 +448,7 @@ function MainLayout() {
                                 type="button"
                                 variant={view === activeView ? "default" : "ghost"}
                                 aria-pressed={view === activeView}
-                                className="rounded-lg px-4 py-2 text-sm uppercase tracking-[0.1em]"
+                                className="rounded-lg px-4 py-2 text-sm uppercase tracking-widest"
                             >
                                 {view === "today" && "Today"}
                                 {view === "week" && "Week"}
@@ -482,7 +482,7 @@ function MainLayout() {
                         role="article"
                         aria-label="Current weather conditions"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
+                        <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-black/5 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-black/5 dark:via-black/0 -z-10 " />
 
                         <div className="relative flex flex-col gap-6">
                             <div className="flex flex-col gap-3">
@@ -583,7 +583,7 @@ function MainLayout() {
                         role="article"
                         aria-label="Hourly forecast chart"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
+                        <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-black/10 via-black/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-black/5 dark:via-black/0 -z-10 " />
 
                         <div className="relative flex flex-col gap-6">
                             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -729,7 +729,7 @@ function MainLayout() {
                         role="article"
                         aria-label="7 day extended forecast"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
+                        <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-black/20 via-black/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-black/50 dark:via-black/20 -z-10" />
 
                         <div className="relative flex flex-col gap-6">
                             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -811,7 +811,7 @@ function MainLayout() {
                         role="article"
                         aria-label="Air quality and weather alerts"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
+                        <div className=" pointer-events-none absolute inset-0 bg-linear-to-br from-black/10 via-black/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-black/5 dark:via-black/0 -z-10 " />
 
                         <div className="relative flex flex-col gap-6">
                             <div className="flex flex-wrap items-center justify-between gap-3">
