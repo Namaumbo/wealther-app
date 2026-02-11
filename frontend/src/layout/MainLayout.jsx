@@ -305,12 +305,40 @@ const SEVERITY_STYLES = {
     Warning: "bg-red-500/20 text-red-600 dark:text-red-400",
 };
 
+const SEVERITY_ICON_CLASSES = {
+    Advisory: "text-blue-700 dark:text-blue-600",
+    Watch: "text-amber-800 dark:text-amber-600",
+    Warning: "text-red-800 dark:text-red-600",
+};
+
 const CONDITION_ICONS = {
     sunny: Sun,
     rain: CloudRain,
     cloudy: Cloud,
     storm: CloudLightning,
 };
+
+const CONDITION_ICON_CLASSES = {
+    sunny: "text-amber-500 dark:text-amber-300",
+    rain: "text-sky-600 dark:text-sky-300",
+    cloudy: "text-slate-800 dark:text-slate-600",
+    storm: "text-violet-800 dark:text-violet-600",
+};
+
+const METRIC_ICON_CLASSES = {
+    Humidity: "text-sky-600 dark:text-sky-300",
+    Wind: "text-teal-600 dark:text-teal-300",
+    Pressure: "text-violet-600 dark:text-violet-300",
+    Precipitation: "text-amber-800 dark:text-amber-600",
+};
+
+function getMetricIconClass(label) {
+    return METRIC_ICON_CLASSES[label] ?? "text-foreground/70";
+}
+
+function getConditionIconClass(condition) {
+    return CONDITION_ICON_CLASSES[condition] ?? "text-foreground/70";
+}
 
 function formatHour(timestamp, timezone) {
     return new Intl.DateTimeFormat(undefined, {
@@ -423,7 +451,9 @@ function MainLayout() {
                             variant="outline"
                             className="inline-flex items-center gap-2 rounded-full bg-background/55 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70 backdrop-blur"
                         >
-                            <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
+                            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-current/30 bg-background/50 text-sky-600 dark:text-sky-300">
+                                <CalendarDays className="h-3.5 w-3.5 text-current" aria-hidden="true" />
+                            </span>
                             7-Day Coastal Outlook
                         </Badge>
 
@@ -432,7 +462,9 @@ function MainLayout() {
                                 Lilongwe Weather Overview
                             </h1>
                             <p className="mt-2 flex flex-wrap items-center gap-2 text-sm text-foreground/70">
-                                <MapPin className="h-4 w-4" aria-hidden="true" />
+                                <span className="flex h-7 w-7 items-center justify-center rounded-full border border-current/30 bg-background/50 text-violet-600 dark:text-violet-300">
+                                    <MapPin className="h-4 w-4 text-current" aria-hidden="true" />
+                                </span>
                                 {weatherData.location}
                                 <span aria-live="polite" className="text-foreground/50">
                                     · {updatedLabel}
@@ -462,7 +494,9 @@ function MainLayout() {
                             onClick={() => undefined}
                             className="gap-2 rounded-lg text-xs uppercase tracking-[0.15em]"
                         >
-                            <RefreshCcw className="h-4 w-4" aria-hidden="true" />
+                            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-current/30 bg-background/50 text-emerald-700 dark:text-emerald-500">
+                                <RefreshCcw className="h-4 w-4 text-current" aria-hidden="true" />
+                            </span>
                             Refresh
                         </Button>
                     </div>
@@ -487,8 +521,13 @@ function MainLayout() {
                         <div className="relative flex flex-col gap-6">
                             <div className="flex flex-col gap-3">
                                 <div className="flex items-center gap-3">
-                                    <div className="rounded-full bg-background/60 p-3">
-                                        <Sun className="h-6 w-6 text-primary" aria-hidden="true" />
+                                    <div
+                                        className={
+                                            "flex h-12 w-12 items-center justify-center rounded-full border border-current/30 bg-background/60 " +
+                                            getConditionIconClass(weatherData.current.condition)
+                                        }
+                                    >
+                                        <Sun className="h-6 w-6 text-current" aria-hidden="true" />
                                     </div>
                                     <div>
                                         <p className="text-xs uppercase tracking-[0.2em] text-foreground/70">
@@ -536,8 +575,16 @@ function MainLayout() {
                                         transition={{ duration: 0.2 }}
                                         className="flex items-start gap-3 rounded-xl bg-background/40 p-4 transition-all hover:bg-background/60"
                                     >
-                                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-background/60 text-foreground/70">
-                                            <metric.icon className="h-4 w-4" aria-hidden="true" />
+                                        <span
+                                            className={
+                                                "flex h-10 w-10 items-center justify-center rounded-full border border-current/30 bg-background/60 " +
+                                                getMetricIconClass(metric.label)
+                                            }
+                                        >
+                                            <metric.icon
+                                                className="h-4 w-4 text-current"
+                                                aria-hidden="true"
+                                            />
                                         </span>
                                         <div className="space-y-1">
                                             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60">
@@ -557,7 +604,9 @@ function MainLayout() {
                             <div className="flex flex-col gap-3 rounded-xl bg-background/30 p-4">
                                 <div className="flex items-center justify-between text-sm text-foreground/70">
                                     <div className="flex items-center gap-2">
-                                        <Sunrise className="h-4 w-4" aria-hidden="true" />
+                                        <span className="flex h-7 w-7 items-center justify-center rounded-full border border-current/30 bg-background/50 text-amber-600 dark:text-amber-300">
+                                            <Sunrise className="h-4 w-4 text-current" aria-hidden="true" />
+                                        </span>
                                         Sunrise
                                     </div>
                                     <span className="text-foreground">
@@ -566,7 +615,9 @@ function MainLayout() {
                                 </div>
                                 <div className="flex items-center justify-between text-sm text-foreground/70">
                                     <div className="flex items-center gap-2">
-                                        <Sunset className="h-4 w-4" aria-hidden="true" />
+                                        <span className="flex h-7 w-7 items-center justify-center rounded-full border border-current/30 bg-background/50 text-rose-600 dark:text-rose-300">
+                                            <Sunset className="h-4 w-4 text-current" aria-hidden="true" />
+                                        </span>
                                         Sunset
                                     </div>
                                     <span className="text-foreground">
@@ -707,8 +758,16 @@ function MainLayout() {
                                             </div>
                                             <div className="flex items-center justify-between text-sm text-foreground/70">
                                                 <div className="flex items-center gap-2">
-                                                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-background/50 text-foreground/70">
-                                                        <Icon className="h-4 w-4" aria-hidden="true" />
+                                                    <span
+                                                        className={
+                                                            "flex h-8 w-8 items-center justify-center rounded-full border border-current/30 bg-background/50 " +
+                                                            getConditionIconClass(hour.condition)
+                                                        }
+                                                    >
+                                                        <Icon
+                                                            className="h-4 w-4 text-current"
+                                                            aria-hidden="true"
+                                                        />
                                                     </span>
                                                     <span>{hour.windSpeed} mph winds</span>
                                                 </div>
@@ -776,8 +835,16 @@ function MainLayout() {
                                             </div>
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-3">
-                                                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-background/50 text-foreground/70">
-                                                        <Icon className="h-5 w-5" aria-hidden="true" />
+                                                    <span
+                                                        className={
+                                                            "flex h-10 w-10 items-center justify-center rounded-full border border-current/30 bg-background/50 " +
+                                                            getConditionIconClass(day.condition)
+                                                        }
+                                                    >
+                                                        <Icon
+                                                            className="h-5 w-5 text-current"
+                                                            aria-hidden="true"
+                                                        />
                                                     </span>
                                                     <div>
                                                         <p className="text-lg font-semibold text-foreground">
@@ -880,8 +947,16 @@ function MainLayout() {
                                                 variants={listItemVariants}
                                                 className="flex items-start gap-3 rounded-xl bg-background/40 p-4"
                                             >
-                                                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-background/60 text-foreground/70">
-                                                    <Icon className="h-5 w-5" aria-hidden="true" />
+                                                <span
+                                                    className={
+                                                        "flex h-10 w-10 items-center justify-center rounded-full border border-current/30 bg-background/60 " +
+                                                        (SEVERITY_ICON_CLASSES[alert.severity] ?? "text-foreground/70")
+                                                    }
+                                                >
+                                                    <Icon
+                                                        className="h-5 w-5 text-current"
+                                                        aria-hidden="true"
+                                                    />
                                                 </span>
                                                 <div className="flex-1 space-y-1">
                                                     <div className="flex flex-wrap items-center gap-2">
