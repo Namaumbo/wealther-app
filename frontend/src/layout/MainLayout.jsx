@@ -53,7 +53,7 @@ import {
     Umbrella,
     Wind,
 } from "lucide-react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
     Area,
     AreaChart,
@@ -299,6 +299,12 @@ const listItemVariants = {
     },
 };
 
+const SEVERITY_ICONS = {
+    Advisory: Wind,
+    Watch: Umbrella,
+    Warning: CloudLightning,
+};
+
 const SEVERITY_STYLES = {
     Advisory: "bg-blue-500/20 text-blue-600 dark:text-blue-400",
     Watch: "bg-amber-500/20 text-amber-600 dark:text-amber-400",
@@ -390,7 +396,25 @@ function describePrecipitation(chance) {
 
 function MainLayout() {
     const activeView = "today";
-    const weatherData = STATIC_WEATHER_DATA;
+    const [weatherData, setWeatherData] = useState(STATIC_WEATHER_DATA);
+    const [loading, setLoading] = useState(true);
+    const [fetchError, setFetchError] = useState(null);
+
+    useEffect(() => {
+        fetch("/api/weather/")
+            .then((res) => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then((data) => {
+                setWeatherData(data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setFetchError(err.message);
+                setLoading(false);
+            });
+    }, []);
 
     const weatherMetrics = useMemo(() => {
         return [
@@ -939,7 +963,7 @@ function MainLayout() {
                                     variants={containerVariants}
                                 >
                                     {alerts.map((alert) => {
-                                        const Icon = alert.icon;
+                                        const Icon = alert.icon ?? SEVERITY_ICONS[alert.severity] ?? Wind;
                                         return (
                                             <motion.li
                                                 key={alert.title}
